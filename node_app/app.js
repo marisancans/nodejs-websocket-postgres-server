@@ -3,6 +3,7 @@ const WebSocket = require('ws');
 // Timestapms
 const moment = require('moment'); 
 
+
 // Postgres
 var pg_user = 'postgresuser'
 var pg_host = '192.168.88.252'
@@ -144,7 +145,7 @@ wss.on('connection', function connection(ws) {
       // promise
       db.one(text, values)
       .then(res => {
-        console.log(res.rows[0])
+        console.log(res)
       })
       .catch(e => console.error(e.stack))
     }
