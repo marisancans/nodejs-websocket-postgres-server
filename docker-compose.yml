@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  
+  postgres:
+    image: "arm32v6/postgres:12.2-alpine"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgresuser
+    ports:
+      - "5432:5432"
+    networks:
+      - pi-network
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data  
+  
+  node:
+    build: ./nodeapp
+    restart: always
+    depends_on:
+      - postgres
+    command: ash -c 'while ! nc -z postgres 5432; do sleep 1; done;'
+    networks:
+      - pi-network
+    ports:
+      - "7000:7000"
+  
+networks:
+  pi-network:
+    driver: bridge
