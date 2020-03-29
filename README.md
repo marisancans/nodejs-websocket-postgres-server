@@ -14,3 +14,11 @@ Received data is from NodeMCU, a microcontroller that reads analog values from s
 This project is a small part from my idea of "smart house".
 
 ![](pidocker.png)
+
+
+Run PgAdmin4 with docker
+docker run -p 8008:80 \
+    -v $HOME/data/pga4volume:/var/lib/pgadmin \
+    -e 'PGADMIN_DEFAULT_EMAIL=user@domain.com' \
+    -e 'PGADMIN_DEFAULT_PASSWORD=SuperSecret' \
+    -d dpage/pgadmin4
