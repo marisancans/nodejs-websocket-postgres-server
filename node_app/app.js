@@ -50,16 +50,16 @@ function removeListeners(client) {
 }
 
 function onConnectionLost(err, e) {
-  console.log('Connectivity Problem:', err);
+  console.log('Connectivity Problem to postgres:', err);
   connection = null; // prevent use of the broken connection
   removeListeners(e.client);
   reconnect(5000, 10) // retry 10 times, with 5-second intervals
       .then(() => {
-          console.log('Successfully Reconnected');
+          console.log('Successfully Reconnected to postgres');
       })
       .catch(() => {
           // failed after 10 attempts
-          console.log('Connection Lost Permanently');
+          console.log('Connection Lost Permanently to postgres');
           process.exit(); // exiting the process
       });
 }
@@ -105,7 +105,7 @@ function sendNotifications() {
 
 reconnect(5000, 10) // = same as reconnect(0, 1)
     .then(obj => {
-        console.log('Successful Initial Connection');
+        console.log('Successful Initial Connection to postgres');
         // obj.done(); - releases the connection
         sendNotifications();
     })

@@ -20,7 +20,6 @@ services:
     restart: always
     depends_on:
       - postgres
-    command: ash -c 'while ! nc -z postgres 5432; do sleep 1; done;'
     networks:
       - pi-network
     ports:
