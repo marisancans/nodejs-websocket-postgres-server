@@ -8,7 +8,7 @@
     "pg": "^7.18.2",
     "pg-promise": "^10.4.4",
     "utf-8-validate": "^5.0.2",
-    "ws": "^7.2.3"
+    "ws": "^7.4.6"
   },
   "optionalDependencies": {
     "bufferutil": "^4.0.1",
